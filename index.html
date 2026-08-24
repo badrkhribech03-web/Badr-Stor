@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#c90022"
+    >
+
+    <title>Badr Store | Football Maroc</title>
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f5f6f8;
+            color: #111;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        select,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+
+            width: 100%;
+            height: 68px;
+
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #fff;
+
+            border-bottom:
+                1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+        .logo span {
+            font-size: 25px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav a {
+            font-size: 15px;
+            font-weight: 700;
+
+            transition:
+                color .25s ease;
+        }
+
+        .nav a:hover {
+            color: #c90022;
+        }
+
+        .cart {
+            position: relative;
+
+            font-size: 21px;
+
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+
+            top: -9px;
+            right: -12px;
+
+            min-width: 20px;
+            height: 20px;
+
+            padding: 2px 5px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #c90022;
+            color: #fff;
+
+            border-radius: 50%;
+
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .menu-btn {
+            display: none;
+
+            border: 0;
+            background: transparent;
+
+            font-size: 27px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            width: 100%;
+            min-height: 570px;
+
+            display: flex;
+            align-items: center;
+
+            padding:
+                70px 8%;
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.88),
+                    rgba(0,0,0,.58),
+                    rgba(0,0,0,.18)
+                ),
+
+                url(
+                    "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1600&q=85"
+                );
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 620px;
+            color: #fff;
+        }
+
+        .small-title {
+            margin-bottom: 18px;
+
+            color: #ffd000;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            margin-bottom: 25px;
+
+            font-size:
+                clamp(
+                    48px,
+                    8vw,
+                    82px
+                );
+
+            line-height: .92;
+        }
+
+        .hero p {
+            max-width: 560px;
+
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding:
+                15px 25px;
+
+            background: #c90022;
+            color: #fff;
+
+            border-radius: 8px;
+
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .hero-btn:hover {
+            background: #a9001c;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            width: 100%;
+
+            padding:
+                70px 6%;
+
+            text-align: center;
+        }
+
+        .categories h2 {
+            margin-bottom: 35px;
+
+            font-size: 36px;
+        }
+
+        .category-grid {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    5,
+                    minmax(100px, 1fr)
+                );
+
+            gap: 14px;
+        }
+
+        .category-btn {
+            min-height: 95px;
+
+            padding: 15px 10px;
+
+            background: #fff;
+
+            border:
+                1px solid #e4e4e4;
+
+            border-radius: 14px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                .25s ease;
+        }
+
+        .category-btn .icon {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 27px;
+        }
+
+        .category-btn:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #c90022;
+
+            box-shadow:
+                0 12px 25px
+                rgba(0,0,0,.08);
+        }
+
+
+        /* =========================
+           PRODUCTS HEADER
+        ========================= */
+
+        .products-section {
+            width: 100%;
+
+            padding:
+                20px 6% 80px;
+        }
+
+        .section-title {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+            margin-bottom: 35px;
+        }
+
+        .section-label {
+            color: #c90022;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            margin-top: 6px;
+
+            font-size: 36px;
+        }
+
+        #sort {
+            min-width: 170px;
+
+            padding:
+                12px 14px;
+
+            background: #fff;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           PRODUCTS GRID
+        ========================= */
+
+        .products {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0,1fr)
+                );
+
+            gap: 22px;
+        }
+
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .product-card {
+            min-width: 0;
+
+            overflow: hidden;
+
+            background: #fff;
+
+            border:
+                1px solid #e9e9e9;
+
+            border-radius: 16px;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .product-card:hover {
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.10);
+        }
+
+        .product-image {
+            position: relative;
+
+            width: 100%;
+            height: 270px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f3f3f3;
+
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+
+            transition:
+                transform .4s ease;
+        }
+
+        .product-card:hover
+        .product-image img {
+            transform: scale(1.06);
+        }
+
+        .badge {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            z-index: 2;
+
+            padding:
+                6px 9px;
+
+            background: #c90022;
+            color: #fff;
+
+            border-radius: 5px;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .product-info {
+            padding: 17px;
+        }
+
+        .product-category {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #777;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            min-height: 45px;
+
+            margin-bottom: 8px;
+
+            font-size: 17px;
+            font-weight: 800;
+
+            line-height: 1.3;
+        }
+
+        .product-price {
+            margin-bottom: 15px;
+
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .add-btn,
+        .view-btn {
+            flex: 1;
+
+            padding:
+                11px 7px;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background: #111;
+            color: #fff;
+        }
+
+        .view-btn {
+            background: #eeeeee;
+            color: #111;
+        }
+
+        .add-btn:hover {
+            background: #c90022;
+        }
+
+        .view-btn:hover {
+            background: #ddd;
+        }
+
+
+        /* =========================
+           MOROCCO
+        ========================= */
+
+        .morocco {
+            width:
+                calc(100% - 12%);
+
+            margin:
+                10px 6% 70px;
+
+            padding: 55px 25px;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    #a80020,
+                    #d00028
+                );
+
+            border-radius: 20px;
+
+            color: #fff;
+
+            text-align: center;
+        }
+
+        .morocco .flag {
+            font-size: 45px;
+        }
+
+        .morocco h2 {
+            margin:
+                10px 0;
+
+            font-size: 35px;
+        }
+
+        .morocco p {
+            max-width: 600px;
+
+            margin: auto;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            padding:
+                70px 20px;
+
+            background: #fff;
+
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 10px;
+
+            font-size: 35px;
+        }
+
+        .contact p {
+            margin-bottom: 25px;
+
+            color: #666;
+        }
+
+        .whatsapp {
+            display: inline-block;
+
+            padding:
+                14px 25px;
+
+            background: #159447;
+            color: #fff;
+
+            border-radius: 8px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                35px 20px;
+
+            background: #111;
+
+            color: #fff;
+
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 10px;
+
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        footer p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        #toast {
+            position: fixed;
+
+            left: 50%;
+            bottom: 25px;
+
+            z-index: 99999;
+
+            padding:
+                13px 20px;
+
+            background: #111;
+            color: #fff;
+
+            border-radius: 8px;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transform:
+                translate(-50%, 80px);
+
+            transition:
+                .3s ease;
+        }
+
+        #toast.show {
+            opacity: 1;
+
+            transform:
+                translate(-50%, 0);
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media
+        screen and
+        (max-width: 1050px) {
+
+            .products {
+                grid-template-columns:
+                    repeat(
+                        3,
+                        minmax(0,1fr)
+                    );
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media
+        screen and
+        (max-width: 700px) {
+
+            .header {
+                height: 65px;
+
+                padding:
+                    0 16px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo span {
+                font-size: 22px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+
+                position: absolute;
+
+                top: 65px;
+                left: 0;
+
+                width: 100%;
+
+                padding: 20px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 18px;
+
+                background: #fff;
+
+                border-top:
+                    1px solid #eee;
+
+                box-shadow:
+                    0 10px 25px
+                    rgba(0,0,0,.08);
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav a {
+                width: 100%;
+            }
+
+            .cart {
+                margin-left: auto;
+                margin-right: 15px;
+            }
+
+
+            /* HERO */
+
+            .hero {
+                min-height: 500px;
+
+                padding:
+                    50px 22px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+
+            /* CATEGORIES */
+
+            .categories {
+                padding:
+                    50px 15px;
+            }
+
+            .categories h2 {
+                font-size: 30px;
+            }
+
+            .category-grid {
+                grid-template-columns:
+                    repeat(
+                        3,
+                        minmax(0,1fr)
+                    );
+
+                gap: 9px;
+            }
+
+            .category-btn {
+                min-height: 80px;
+
+                padding:
+                    10px 4px;
+
+                font-size: 12px;
+            }
+
+            .category-btn .icon {
+                font-size: 23px;
+            }
+
+
+            /* PRODUCTS */
+
+            .products-section {
+                padding:
+                    20px 13px 60px;
+            }
+
+            .section-title {
+                flex-direction: column;
+
+                align-items:
+                    flex-start;
+
+                gap: 15px;
+            }
+
+            .section-title h2 {
+                font-size: 29px;
+            }
+
+            #sort {
+                width: 100%;
+            }
+
+            .products {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+
+                gap: 11px;
+            }
+
+            .product-image {
+                height: 190px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-category {
+                font-size: 9px;
+            }
+
+            .product-name {
+                min-height: 38px;
+
+                font-size: 14px;
+            }
+
+            .product-price {
+                font-size: 17px;
+            }
+
+            .add-btn,
+            .view-btn {
+                padding:
+                    10px 3px;
+
+                font-size: 10px;
+            }
+
+
+            /* MOROCCO */
+
+            .morocco {
+                width:
+                    calc(100% - 28px);
+
+                margin:
+                    10px 14px 50px;
+
+                padding:
+                    40px 18px;
+            }
+
+            .morocco h2 {
+                font-size: 28px;
+            }
+
+            .morocco p {
+                font-size: 14px;
+            }
+
+        }
+
+
+        /* =========================
+           SMALL PHONE
+        ========================= */
+
+        @media
+        screen and
+        (max-width: 400px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .products {
+                gap: 8px;
+            }
+
+            .product-image {
+                height: 165px;
+            }
+
+            .product-info {
+                padding: 9px;
+            }
+
+            .product-name {
+                font-size: 13px;
+            }
+
+            .product-price {
+                font-size: 15px;
+            }
+
+            .category-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <a
+            href="#home"
+            class="logo"
+        >
+            ⚽ Badr Store
+        </a>
+
+
+        <button
+            class="menu-btn"
+            onclick="toggleMenu()"
+            aria-label="Menu"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="nav"
+            id="nav"
+        >
+
+            <a href="#home">
+                Accueil
+            </a>
+
+            <a href="#products">
+                Produits
+            </a>
+
+            <a href="#categories">
+                Catégories
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div
+            class="cart"
+            onclick="showCart()"
+        >
+
+            🛒
+
+            <span
+                class="cart-count"
+                id="cart-count"
+            >
+                0
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                🇲🇦 SHOP FOOTBALL MAROC
+            </div>
+
+            <h1>
+                Ton terrain.<br>
+                Ton style.
+            </h1>
+
+            <p>
+                Maillots, crampons, ballons
+                et accessoires pour les vrais
+                passionnés du football.
+            </p>
+
+            <a
+                href="#products"
+                class="hero-btn"
+            >
+                Découvrir les produits
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================== -->
+
+    <section
+        class="categories"
+        id="categories"
+    >
+
+        <h2>
+            Catégories
+        </h2>
+
+
+        <div class="category-grid">
+
+
+            <button
+                class="category-btn"
+                onclick="filterProducts('all')"
+            >
+
+                <span class="icon">
+                    ⚽
+                </span>
+
+                Tous
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterProducts('maillot')"
+            >
+
+                <span class="icon">
+                    👕
+                </span>
+
+                Maillots
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterProducts('chaussures')"
+            >
+
+                <span class="icon">
+                    👟
+                </span>
+
+                Crampons
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterProducts('ballon')"
+            >
+
+                <span class="icon">
+                    ⚽
+                </span>
+
+                Ballons
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterProducts('gants')"
+            >
+
+                <span class="icon">
+                    🧤
+                </span>
+
+                Gants
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <section
+        class="products-section"
+        id="products"
+    >
+
+
+        <div class="section-title">
+
+            <div>
+
+                <div class="section-label">
+                    NOTRE SÉLECTION
+                </div>
+
+                <h2>
+                    Produits populaires
+                </h2>
+
+            </div>
+
+
+            <select
+                id="sort"
+                onchange="sortProducts()"
+            >
+
+                <option value="default">
+                    Trier par
+                </option>
+
+                <option value="low">
+                    Prix croissant
+                </option>
+
+                <option value="high">
+                    Prix décroissant
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div
+            class="products"
+            id="products-container"
+        ></div>
+
+
+    </section>
+
+
+    <!-- =========================
+         MOROCCO
+    ========================== -->
+
+    <section class="morocco">
+
+        <div class="flag">
+            🇲🇦
+        </div>
+
+        <h2>
+            Fierté Marocaine
+        </h2>
+
+        <p>
+            Une sélection inspirée des
+            Lions de l'Atlas pour tous
+            les passionnés du football marocain.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        class="contact"
+        id="contact"
+    >
+
+        <h2>
+            Contact
+        </h2>
+
+        <p>
+            Une question sur un produit ?
+        </p>
+
+        <a
+            href="#"
+            class="whatsapp"
+            onclick="contactWhatsApp(event)"
+        >
+            💬 Nous contacter
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            ⚽ Badr Store
+        </div>
+
+        <p>
+            © 2026 Badr Store —
+            Football avec passion 🇲🇦
+        </p>
+
+    </footer>
+
+
+    <!-- TOAST -->
+
+    <div id="toast"></div>
+
+
+    <script>
+
+        /* =========================
+           PRODUCTS
+        ========================== */
+
+        const products = [
+
+            {
+                id: 1,
+
+                name:
+                    "Maillot Home 2026 Maroc Homme",
+
+                category:
+                    "maillot",
+
+                price:
+                    995,
+
+                image:
+                    "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/equipe-nationale-du-maroc/861-62457-maillot-home-2026-maroc-homme-4069162296184.html"
+
+            },
+
+
+            {
+                id: 2,
+
+                name:
+                    "Maillot Away 2026 Maroc Homme",
+
+                category:
+                    "maillot",
+
+                price:
+                    995,
+
+                image:
+                    "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/equipe-nationale-du-maroc/867-maillot-away-2026-maroc-homme.html"
+
+            },
+
+
+            {
+                id: 3,
+
+                name:
+                    "Maillot Fan Maroc Home 2026",
+
+                category:
+                    "maillot",
+
+                price:
+                    350,
+
+                image:
+                    "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/equipe-nationale-du-maroc/2466-maillot-de-fan-maroc-home-2026-homme.html"
+
+            },
+
+
+            {
+                id: 4,
+
+                name:
+                    "Maillot Home Maroc Enfant 2026",
+
+                category:
+                    "maillot",
+
+                price:
+                    795,
+
+                image:
+                    "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/equipe-nationale-du-maroc/866-maillot-home-2026-maroc-enfant-et-adolescent.html"
+
+            },
+
+
+            {
+                id: 5,
+
+                name:
+                    "FUTURE 9 MATCH FG/AG",
+
+                category:
+                    "chaussures",
+
+                price:
+                    995,
+
+                image:
+                    "https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/midboot/778-44709-chaussure-de-football-future-9-match-fg-ag-unisexe.html"
+
+            },
+
+
+            {
+                id: 6,
+
+                name:
+                    "FUTURE 7 PLAY FG/AG",
+
+                category:
+                    "chaussures",
+
+                price:
+                    595,
+
+                image:
+                    "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/120-football"
+
+            },
+
+
+            {
+                id: 7,
+
+                name:
+                    "KING MATCH FG/AG",
+
+                category:
+                    "chaussures",
+
+                price:
+                    645,
+
+                image:
+                    "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/120-football"
+
+            },
+
+
+            {
+                id: 8,
+
+                name:
+                    "Ballon ftblCulture Maroc",
+
+                category:
+                    "ballon",
+
+                price:
+                    285,
+
+                image:
+                    "https://images.unsplash.com/photo-1614632537190-23e4146777db?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/equipe-nationale-du-maroc/2412-ballon-ftblculture-maroc.html"
+
+            },
+
+
+            {
+                id: 9,
+
+                name:
+                    "Ballon Neymar Jr Graphic",
+
+                category:
+                    "ballon",
+
+                price:
+                    245,
+
+                image:
+                    "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/36-ballons"
+
+            },
+
+
+            {
+                id: 10,
+
+                name:
+                    "Gants PUMA ULTRA Pro",
+
+                category:
+                    "gants",
+
+                price:
+                    650,
+
+                image:
+                    "https://images.unsplash.com/photo-1580748141549-71748dbe0f84?auto=format&fit=crop&w=800&q=85",
+
+                link:
+                    "https://ma.puma.com/120-football"
+
+            }
+
+        ];
+
+
+        let currentProducts =
+            [...products];
+
+
+        let cartCount = 0;
+
+
+        /* =========================
+           DISPLAY PRODUCTS
+        ========================== */
+
+        function displayProducts(list) {
+
+            const container =
+                document.getElementById(
+                    "products-container"
+                );
+
+
+            container.innerHTML = "";
+
+
+            if (list.length === 0) {
+
+                container.innerHTML = `
+                    <p style="
+                        grid-column:1/-1;
+                        text-align:center;
+                        padding:50px;
+                        color:#777;
+                    ">
+                        Aucun produit trouvé.
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            list.forEach(product => {
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "product-card";
+
+
+                card.innerHTML = `
+
+                    <div class="product-image">
+
+                        ${
+                            product.id <= 4
+                            ?
+                            `<span class="badge">
+                                MAROC 🇲🇦
+                            </span>`
+                            :
+                            ""
+                        }
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            ${product.category}
+                        </span>
+
+
+                        <h3 class="product-name">
+                            ${product.name}
+                        </h3>
+
+
+                        <div class="product-price">
+                            ${product.price}
+                            MAD
+                        </div>
+
+
+                        <div class="product-buttons">
+
+                            <button
+                                class="add-btn"
+                                onclick="addToCart('${product.name}')"
+                            >
+                                Ajouter
+                            </button>
+
+
+                            <button
+                                class="view-btn"
+                                onclick="viewProduct('${product.link}')"
+                            >
+                                Voir
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+
+        function filterProducts(category) {
+
+            if (category === "all") {
+
+                currentProducts =
+                    [...products];
+
+            } else {
+
+                currentProducts =
+                    products.filter(
+                        product =>
+                            product.category ===
+                            category
+                    );
+
+            }
+
+
+            displayProducts(
+                currentProducts
+            );
+
+
+            document
+                .getElementById("products")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+
+        function sortProducts() {
+
+            const value =
+                document.getElementById(
+                    "sort"
+                ).value;
+
+
+            let sorted =
+                [...currentProducts];
+
+
+            if (value === "low") {
+
+                sorted.sort(
+                    (a,b) =>
+                        a.price - b.price
+                );
+
+            }
+
+
+            if (value === "high") {
+
+                sorted.sort(
+                    (a,b) =>
+                        b.price - a.price
+                );
+
+            }
+
+
+            displayProducts(
+                sorted
+            );
+
+        }
+
+
+
+        function addToCart(name) {
+
+            cartCount++;
+
+
+            document
+                .getElementById(
+                    "cart-count"
+                )
+                .textContent =
+                    cartCount;
+
+
+            showToast(
+                name +
+                " ajouté au panier 🛒"
+            );
+
+        }
+
+
+        function showCart() {
+
+            if (cartCount === 0) {
+
+                showToast(
+                    "Votre panier est vide 🛒"
+                );
+
+            } else {
+
+                showToast(
+                    "Produits dans le panier : "
+                    + cartCount
+                );
+
+            }
+
+        }
+
+
+
+        function viewProduct(link) {
+
+            window.open(
+                link,
+                "_blank"
+            );
+
+        }
+
+
+
+
+        function toggleMenu() {
+
+            document
+                .getElementById("nav")
+                .classList.toggle(
+                    "active"
+                );
+
+        }
+
+
+        
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById(
+                    "toast"
+                );
+
+
+            toast.textContent =
+                message;
+
+
+            toast.classList.add(
+                "show"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    toast.classList.remove(
+                        "show"
+                    );
+
+                },
+                2500
+            );
+
+        }
+
+
+    
+
+        function contactWhatsApp(event) {
+
+            event.preventDefault();
+
+            showToast(
+                "Ajoute ton numéro WhatsApp dans le code 📱"
+            );
+
+        }
+
+
+
+
+        displayProducts(
+            products
+        );
+
+    </script>
+
+
+</body>
+
+</html>
